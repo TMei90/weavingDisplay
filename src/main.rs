@@ -38,7 +38,8 @@ struct WeavingInstruction {
 
 #[macroquad::main(window_conf)]
 async fn main() {
-    let file = File::open("14card design.twt").unwrap();
+    let path = std::path::Path::new("Patterns/6 card shoelace x O.twt");
+    let file = File::open(path).unwrap();
     let pattern: Pattern = serde_json::from_reader(file).unwrap();
     let colors: Vec<Color> = pattern
         .colour_palette
@@ -58,7 +59,6 @@ async fn main() {
     let mut _current_row: u32 = 0;
     let hole_letters = ["H", "G", "F", "E", "D", "C", "B", "A"];
 
-    println!("Hello, world!");
     loop {
         clear_background(DARKGRAY);
         let dim_pattern_name = measure_text(&pattern.name, None, font_size, 1.0);
@@ -79,7 +79,7 @@ async fn main() {
                 padding,
                 pattern.number_of_holes,
             );
-            draw_setup_colors(
+            draw_setup_thread_colors(
                 font_size as f32,
                 &pattern,
                 start_display_setup,
@@ -151,7 +151,7 @@ fn draw_setup_text(
         );
     }
 }
-fn draw_setup_colors(
+fn draw_setup_thread_colors(
     font_size: f32,
     pattern: &Pattern,
     start_display_setup: f32,
