@@ -5,8 +5,6 @@ Works with patterns from [twistedthreads](https://twistedthreads.org/)
 
 TODO:
 
-
 [ ] Implement file selection
-
 
 [ ] Implement displaying current row in weaving
